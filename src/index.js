@@ -1,4 +1,4 @@
-fconsole.log('%c HI', 'color: firebrick')
+console.log('%c HI', 'color: firebrick')
 const imgUrl = "https://dog.ceo/api/breeds/image/random/4";
 const breedUrl = "https://dog.ceo/api/breeds/list/all";
 document.addEventListener('DOMContentLoaded',() => fetchImages())
@@ -7,9 +7,12 @@ function fetchImages(){
     .then(response => response.json())
     .then(data => {
         data.message.forEach(url => {
+            let div = document.querySelector('#dog-breeds')
+            let list = document.createElement('li')
             const img = document.createElement('img')
             img.src = url
-            document.body.appendChild(img)
+            div.appendChild(list)
+            list.appendChild(img)
         })
     })
     fetchDogBreeds()
